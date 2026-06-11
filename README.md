@@ -98,6 +98,12 @@ QUANTITY_TOLERANCE_PCT=0.01
    npm run dev
    ```
 
+5. **Quick Test Execution**:
+   To easily run the engine with the provided sample CSVs, start the server in one terminal (`npm run dev`) and then run the helper script in another:
+   ```bash
+   node reconcile.js
+   ```
+
 ---
 
 ## 📖 API Documentation
@@ -241,5 +247,3 @@ QUANTITY_TOLERANCE_PCT=0.01
 
 ### 3. Idempotency Response Design
 * **Decision**: If a completed run is requested again, rather than throwing a `409 Conflict` error (which indicates a transient failure), we return the existing cached run data with `200 OK`. Active runs still throw `409` to prevent race conditions.
-#   A s s i g n m e n t  
- 
