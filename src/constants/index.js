@@ -1,0 +1,60 @@
+const RUN_STATUS = {
+  PENDING: 'PENDING',
+  PROCESSING: 'PROCESSING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED'
+};
+
+const MATCH_STATUS = {
+  MATCHED: 'MATCHED',
+  CONFLICTING: 'CONFLICTING',
+  UNMATCHED: 'UNMATCHED'
+};
+
+const TRANSACTION_TYPES = {
+  BUY: 'BUY',
+  SELL: 'SELL',
+  TRANSFER_IN: 'TRANSFER_IN',
+  TRANSFER_OUT: 'TRANSFER_OUT'
+};
+
+// Maps User side transaction types to Exchange side transaction types for transfer matching
+const TYPE_MAPPINGS = {
+  [TRANSACTION_TYPES.TRANSFER_OUT]: TRANSACTION_TYPES.TRANSFER_IN,
+  [TRANSACTION_TYPES.TRANSFER_IN]: TRANSACTION_TYPES.TRANSFER_OUT,
+  [TRANSACTION_TYPES.BUY]: TRANSACTION_TYPES.BUY,
+  [TRANSACTION_TYPES.SELL]: TRANSACTION_TYPES.SELL
+};
+
+const ASSET_ALIASES = {
+  'bitcoin': 'BTC',
+  'btc': 'BTC',
+  'ethereum': 'ETH',
+  'eth': 'ETH',
+  'tether': 'USDT',
+  'usdt': 'USDT',
+  'solana': 'SOL',
+  'sol': 'SOL',
+  'polygon': 'MATIC',
+  'matic': 'MATIC',
+  'chainlink': 'LINK',
+  'link': 'LINK'
+};
+
+const SCORING = {
+  ASSET_MATCH: 40,
+  TYPE_MATCH: 20,
+  QUANTITY_MATCH: 20,
+  TIMESTAMP_MATCH: 20,
+  THRESHOLD_MATCHED: 100,
+  THRESHOLD_CONFLICTING: 60
+};
+
+module.exports = {
+  RUN_STATUS,
+  MATCH_STATUS,
+  TRANSACTION_TYPES,
+  TYPE_MAPPINGS,
+  ASSET_ALIASES,
+  SCORING
+};
